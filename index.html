@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Find and Replace Tool</title>
+    <style>
+      body {
+        font-family: 'Arial', sans-serif;
+        background-color: #f4f8fb;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+
+      .container {
+        background-color: #ffffff;
+        border-radius: 15px;
+        padding: 30px;
+        width: 80%;
+        max-width: 800px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        text-align: center;
+      }
+
+      h1 {
+        font-size: 2.5rem;
+        color: #5c6bc0;
+        margin-bottom: 20px;
+      }
+
+      textarea {
+        width: 100%;
+        height: 150px;
+        padding: 12px;
+        font-size: 1rem;
+        border-radius: 8px;
+        border: 1px solid #ccc;
+        resize: none;
+        margin-bottom: 20px;
+        box-sizing: border-box;
+      }
+
+      .input-group {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 20px;
+      }
+
+      .input-group input {
+        padding: 12px;
+        border-radius: 8px;
+        border: 1px solid #ccc;
+        margin-right: 10px;
+        font-size: 1rem;
+        flex: 1;
+      }
+
+      .input-group button {
+        padding: 12px 20px;
+        border-radius: 8px;
+        border: none;
+        background-color: #5c6bc0;
+        color: white;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+
+      .input-group button:hover {
+        background-color: #3f4a8a;
+      }
+
+      .result {
+        background-color: #fafafa;
+        padding: 12px;
+        border-radius: 8px;
+        font-size: 1rem;
+        color: #333;
+        white-space: pre-wrap;
+        word-wrap: break-word;
+        margin-top: 20px;
+      }
+
+      .footer {
+        font-size: 0.9rem;
+        color: #777;
+        margin-top: 30px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Find and Replace Tool</h1>
+      <textarea id="textInput" placeholder="Paste or type your text here..."></textarea>
+
+      <div class="input-group">
+        <input
+          type="text"
+          id="findInput"
+          placeholder="Find word/phrase"
+          autocomplete="off"
+        />
+        <input
+          type="text"
+          id="replaceInput"
+          placeholder="Replace with"
+          autocomplete="off"
+        />
+        <button onclick="replaceText()">Replace</button>
+      </div>
+
+      <div class="result" id="result">
+        <!-- Replaced text will appear here -->
+      </div>
+
+      <div class="footer">
+        <p>Created with ❤️ by [Your Name]</p>
+      </div>
+    </div>
+
+    <script>
+      function replaceText() {
+        const textInput = document.getElementById("textInput").value;
+        const findWord = document.getElementById("findInput").value;
+        const replaceWord = document.getElementById("replaceInput").value;
+
+        if (findWord && replaceWord) {
+          const replacedText = textInput.replace(
+            new RegExp(findWord, "gi"),
+            replaceWord
+          );
+          document.getElementById("result").textContent = replacedText;
+        } else {
+          document.getElementById("result").textContent =
+            "Please enter both the find and replace words.";
+        }
+      }
+    </script>
+  </body>
+</html>
